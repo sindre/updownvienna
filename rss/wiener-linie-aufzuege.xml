@@ -12,6 +12,7 @@
         y.include("http://datejs.googlecode.com/svn/trunk/build/date-en-US.js");   
         var content = y.query("select * from html where url='http://www.wienerlinien.at/eportal/ep/channelView.do/pageTypeId/9082/channelId/-32771' and xpath='//table[@class=\"full\"]/tbody/tr'");
         var date = y.query("select * from html where url='http://www.wienerlinien.at/eportal/ep/channelView.do/pageTypeId/9082/channelId/-32771' and xpath='//div[@class=\"traffic_overview\"][2]'");
+        var random = Math.floor(Math.random()*100000000001);
         var string = date.results.div.p.split("g:")[1];
             var timedate = string.split(",");
             var time = timedate[0];
@@ -31,9 +32,9 @@
 			} 
         }
         if(nr == 0) {
-            out = <item><title>Wiener Linien Aufzugstörungen</title><description>keine Störungen bekannt</description><pubDate>{update}</pubDate><link>http://www.wienerlinien.at/eportal/ep/channelView.do/pageTypeId/9082/channelId/-32771</link></item>;
+            out = <item><title>Aufzugstörungen {string}</title><description>keine Störungen bekannt</description><pubDate>{update}</pubDate><guid isPermaLink="false">{random}</guid><link>http://www.wienerlinien.at/eportal/ep/channelView.do/pageTypeId/9082/channelId/-32771#{random}</link></item>;
         } else {
-            out = <item><title>Wiener Linien Aufzugstörungen</title><description>{sum}</description><pubDate>{update}</pubDate><link>http://www.wienerlinien.at/eportal/ep/channelView.do/pageTypeId/9082/channelId/-32771</link></item>;
+            out = <item><title>Aufzugstörungen {string}</title><description>{sum}</description><pubDate>{update}</pubDate><guid isPermaLink="false">{random}</guid><link>http://www.wienerlinien.at/eportal/ep/channelView.do/pageTypeId/9082/channelId/-32771#{random}</link></item>;
         }
         /*output.appendChild(out);*/
         response.object = out;
