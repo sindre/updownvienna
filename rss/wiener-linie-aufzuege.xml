@@ -16,7 +16,7 @@
             var timedate = string.split(",");
             var time = timedate[0];
             var date = timedate[1];
-            var update = Date.parse(timedate[1]+' ,'+timedate[0]).toString('ddd, d MMM yyyy H:mm:ss +0000'); // Thu, 06 Sep 2012 16:41:55 +0000
+            var update = Date.parse(timedate[1]+' ,'+timedate[0]).toString('ddd, d MMM yyyy H:mm:ss +0200'); // Thu, 06 Sep 2012 16:41:55 +0000
 /*            var output =  <channel>
             <title>Wiener Linien Aufzugsinfo</title>
             <description>Aufzüge derzeit außer Betrieb.</description>
