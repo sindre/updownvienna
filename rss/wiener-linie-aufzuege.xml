@@ -28,7 +28,7 @@
         for each(item in content.results..tr){
     		if(item.td[0].span.@['class'] == "status st_failure") {
 				// sum += '---<br>'+item.td[1].img..@['alt']+' '+item.td[2].p+'- '+item.td[4].p+' '+item.td[5].p+'<br>';
-                sum += '---<br>'+item.td[1].img..@['alt']+' '+item.td[2].p+'<br>';
+                sum += '<br>---<br>'+item.td[1].img..@['alt']+' '+item.td[2].p+'';
                 nr++;
 			} 
         }
