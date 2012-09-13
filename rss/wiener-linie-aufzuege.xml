@@ -27,14 +27,15 @@
         var sum = '', nr = 0;
         for each(item in content.results..tr){
     		if(item.td[0].span.@['class'] == "status st_failure") {
-				sum += '---<br>'+item.td[1].img..@['alt']+' '+item.td[2].p+'- '+item.td[4].p+' '+item.td[5].p+'<br>';
+				// sum += '---<br>'+item.td[1].img..@['alt']+' '+item.td[2].p+'- '+item.td[4].p+' '+item.td[5].p+'<br>';
+                sum += '---<br>'+item.td[1].img..@['alt']+' '+item.td[2].p+'<br>';
                 nr++;
 			} 
         }
         if(nr == 0) {
-            out = <item><title>Aufzugstörungen{string}</title><description>keine Störungen bekannt</description><pubDate>{update}</pubDate><guid isPermaLink="false">{random}</guid><link>http://www.wienerlinien.at/eportal/ep/channelView.do/pageTypeId/9082/channelId/-32771#{random}</link></item>;
+            out = <item><title>Aufzugstörungen{string}</title><description>keine Störungen bekannt</description><pubDate>{update}</pubDate><guid isPermaLink="false">{random}</guid><link>http://sindre.at/updownvienna/#{random}</link></item>;
         } else {
-            out = <item><title>Aufzugstörungen{string}</title><description>{sum}</description><pubDate>{update}</pubDate><guid isPermaLink="false">{random}</guid><link>http://www.wienerlinien.at/eportal/ep/channelView.do/pageTypeId/9082/channelId/-32771#{random}</link></item>;
+            out = <item><title>Aufzugstörungen{string}</title><description>{sum}</description><pubDate>{update}</pubDate><guid isPermaLink="false">{random}</guid><link>http://sindre.at/updownvienna/#{random}</link></item>;
         }
         /*output.appendChild(out);*/
         response.object = out;
