@@ -1,0 +1,74 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>UpDownVienna</title>
+<meta name="viewport" content="width=device-width">
+<link rel="shortcut icon" href="iphone-icon.png" />
+<link rel="image_src" href="iphone-icon.png" />
+<link rel="apple-touch-icon" href="iphone-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<style> 
+html {overflow-x:hidden;-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
+html, body {font-size:14px;font-family:Arial, Helvetica, sans-serif;height:100%;margin:0;padding:0;}
+body {padding:10px;}
+h1 {margin:0;}
+p {margin:.64em 0;}
+#list {border-top:1px solid #ccc;list-style:none;padding:0;margin:0 -10px;}
+#list li {border-bottom:1px solid #ccc;
+background-image:  -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#eeeeee)); 
+background-image:  -webkit-linear-gradient(top, #fefefe, #eeeeee); 
+background-image:     -moz-linear-gradient(top, #fefefe, #eeeeee); 
+background-image:      -ms-linear-gradient(top, #fefefe, #eeeeee); 
+background-image:       -o-linear-gradient(top, #fefefe, #eeeeee); 
+background-image:          linear-gradient(top, #fefefe, #eeeeee);
+    				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fefefe', EndColorStr='#eeeeee'); padding:.5em 10px .5em 65px; position:relative; }
+#list img.status {left:10px;position:absolute;top:12px;}
+#list img.linie {left:35px;position:absolute;top:8px;}
+</style>
+</head>
+
+<body>
+<h1>UpDownVienna</h1>
+<p>Aufzugsstörungen im Netz der Wiener Linien</p>
+<ul id="list"></ul>
+<p>Datenquelle: <a href="http://www.wienerlinien.at/eportal/ep/channelView.do/pageTypeId/9082/channelId/-32771" target="_blank">Wiener Linien</a></p>
+<script>
+		var ds = document.createElement('script');ds.type = 'text/javascript';
+		ds.src = 'http://query.yahooapis.com/v1/public/yql/lang/Aufzuege_Wiener_Linien?format=json&callback=cbfunc';
+		var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ds, s);
+
+		function cbfunc(json) {
+			var html = '';
+			var list = json.query.results.tr;
+			for (var i = 0;i < list.length; i++) {
+				var item = list[i], status = '', wartung = '';
+				if(item.td[0].span.class == "status st_failure") {
+					status = '<img src="http://www.wienerlinien.at/css/img/status_rot_icon.png" alt="Aufzug derzeit außer Betrieb" class="status" />';
+				} else if(item.td[0].span.class == "status st_delay") {
+					status = '<img src="http://www.wienerlinien.at/css/img/status_gelb_icon.png" alt="Hinweis auf bevorstehende Wartung" class="status" />';
+				}
+				if(item.td[5].p && item.td[5].p.content) {
+					wartung = '<br><em>'+item.td[5].p.content+'</em>';
+				}
+				html += '<li class="'+item.td[0].span.class+'">'+status+'<img src="http://www.wienerlinien.at'+item.td[1].img.src+'" alt="'+item.td[1].img.alt+'" class="linie" /> <strong>'+item.td[2].p+'</strong>, <!--'+item.td[3].p+'--><br> '+item.td[4].p+wartung+'</li>';
+			}			
+			document.getElementById('list').innerHTML = html;
+
+		}
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-391732-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
