@@ -32,7 +32,7 @@
                 nr++;
 			} 
         }
-        var random = sum.toString().length();
+        random = sum.toString().length;
         if(nr == 0) {
             out = <item><title>Aufzugstörungen{string}</title><description>keine Störungen bekannt</description><pubDate>{update}</pubDate><guid isPermaLink="false">{random}</guid><link>http://sindre.at/updownvienna/#{random}</link></item>;
         } else {
