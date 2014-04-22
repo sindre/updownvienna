@@ -1,10 +1,10 @@
-updownvienna
+updownvienna.com
 ============
 Aufzugsstörungen im Netz der Wiener Linien
 
-Mobil optimierte Webseite
+Mobil optimierte Web App
 ------------------------------------------------------------
-http://sindre.at/updownvienna/
+http://www.updownvienna.com
 
 RSS Feed 
 ------------------------------------------------------------
@@ -15,3 +15,7 @@ erstellt mittels YQL
 http://developer.yahoo.com/yql/console/?q=use%20'https%3A%2F%2Fraw.github.com%2Fsindre%2Fupdownvienna%2Fmaster%2Frss%2Fwiener-linie-aufzuege.xml'%20as%20m%3Bselect%20*%20from%20m&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys  
 und Yahoo Pipes  
 http://pipes.yahoo.com/sindrewimberger/updownvienna  
+
+Ein Projekt von 
+------------------------------------------------------------
+[Sindre Wimberger](https://twitter.com/sindrewimberger) und [Nico Grienauer](https://twitter.com/grienauer)
